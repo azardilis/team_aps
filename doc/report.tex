@@ -22,6 +22,22 @@
 
 \section*{Question 1}
 \subsection*{A}
+\[f(x) = \lambda \frac{K^n}{K^n + x^n}\]
+\underline{Claim:} The log-log sensitivity of $f(x)$ is bounded by $-n$.
+
+\noindent \underline{Proof:} 
+\begin{align*}
+\frac{\partial \ln f}{\partial \ln x} & =  \frac{\partial f(x)}{\partial x}\frac{x}{f(x)} \\
+& = \frac{\partial (\lambda \frac{K^n}{K^n + x^n})}{\partial x} \frac{x(K^n + x^n)}{\lambda K^n} \\
+& = \frac{- \lambda K^n n x^{n-1}}{(K^n + x^n)^2} \frac{x(K^n + x^n)}{\lambda K^n} \\
+& = \frac{-n x^n}{K^n + x^n}
+\end{align*}
+and
+\begin{equation*}
+\lim_{x \to +\infty} \frac{-n x^n}{K^n + x^n} = -n
+\end{equation*}
+
+
 
 \subsection*{B}
 
