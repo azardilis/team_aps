@@ -10,6 +10,9 @@
 \usepackage{color}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
 
 \author{Paul Rubenstein\\ \texttt{pkr235@cam.ac.uk} \and Steve Smith \\ \texttt{sps41@cam.ac.uk} \and Argyris Zardilis \\ \texttt{az325@cam.ac.uk}}
 \title{Systems Biology Assignment}
@@ -17,5 +20,34 @@
 \begin{document}
 \maketitle
 
+\section*{Question 1}
+\subsection*{A}
+
+\subsection*{B}
+
+\underline{Claim:} \[f(x) = a x+b \Rightarrow \left \langle \frac{\Delta f / \langle f \rangle}{\Delta x / \langle x \rangle}  \frac{{\Delta x}^2}{\langle \Delta x^2 \rangle} \right \rangle = \frac{\partial \ln f}{\partial \ln x} \bigg|_{x=\langle x \rangle} \]
+
+\noindent \underline{Proof:}
+
+\[ \frac{\partial \ln f}{\partial \ln x} \bigg|_{x=\langle x \rangle} = \frac{\partial f}{\partial x} \frac{x}{f} \bigg|_{x=\langle x \rangle} = \frac{a\langle x \rangle}{a \langle x \rangle + b}\]
+
+and
+
+\[ \Delta f = f - \langle f \rangle = (ax+b) - (a \langle x \rangle - b) = a \Delta x\]
+
+Thus:
+
+\begin{align*}
+\left \langle \frac{\Delta f / \langle f \rangle}{\Delta x / \langle x \rangle} \frac{{\Delta x}^2}{\langle \Delta x^2 \rangle} \right \rangle & = \left \langle \frac{a \Delta x /( a \langle x \rangle - b)}{\Delta x / \langle x \rangle} \frac{\Delta x ^2}{\langle \Delta x ^2 \rangle} \right \rangle \\
+&= \left \langle \frac{a \langle x \rangle}{a \langle x \rangle - b} \frac{\Delta x ^2}{\langle \Delta x ^2 \rangle} \right \rangle \\
+&= \frac{a \langle x \rangle}{a \langle x \rangle - b} \frac{\langle \Delta x ^2 \rangle}{\langle \Delta x ^2 \rangle} = \frac{a \langle x \rangle}{a \langle x \rangle - b} = \frac{\partial \ln f}{\partial \ln x} \bigg|_{x=\langle x \rangle}
+\end{align*}
+
+Since $a, \langle x \rangle$ and $\langle \Delta x^2\rangle$ are constants. Thus the claim is true.  $\square$
+
+\subsection*{C}
+
+
+\section*{Question 2}
 
 \end{document}
