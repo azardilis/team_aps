@@ -50,12 +50,14 @@ def init_model(la, beta, C):
 
 def get_vars(sim_res):
     n_species = np.shape(sim_res.trajectories)[1]
+    traj = sim_res.trajectories[500:, :]
+    w_times = sim_res.wait_times[500:]
     species_var = []
     
     for i in xrange(n_species):
-        vals = sim_res.trajectories[:, i]
-        av = np.average(a=vals, weights=sim_res.wait_times)
-        var = np.average(a=(vals-av)**2, weights=sim_res.wait_times)
+        vals = traj[:, i]
+        av = np.average(a=vals, weights=w_times)
+        var = np.average(a=(vals-av)**2, weights=w_times)
         species_var.append(var/av**2)
 
     return species_var
