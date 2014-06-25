@@ -96,22 +96,3 @@ def sim_anab_model():
     sim_results = simulate_model(model=mod, n_steps=100)
 
     return sim_results
-
-
-
-    
-
-    
-    
-
-    
-    
-    
-
-
-
-
-
-
-
-
