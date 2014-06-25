@@ -23,21 +23,40 @@
 \section*{Question 1}
 \subsection*{A}
 \[f(x) = \lambda \frac{K^n}{K^n + x^n}\]
-\underline{Claim:} The log-log sensitivity of $f(x)$ is bounded by $-n$.
+\underline{Claim:} The log-log sensitivity of $f(x)$ is bounded (below) by $-n$.
 
 \noindent \underline{Proof:} 
 \begin{align*}
 \frac{\partial \ln f}{\partial \ln x} & =  \frac{\partial f(x)}{\partial x}\frac{x}{f(x)} \\
 & = \frac{\partial (\lambda \frac{K^n}{K^n + x^n})}{\partial x} \frac{x(K^n + x^n)}{\lambda K^n} \\
 & = \frac{- \lambda K^n n x^{n-1}}{(K^n + x^n)^2} \frac{x(K^n + x^n)}{\lambda K^n} \\
-& = \frac{-n x^n}{K^n + x^n}
+& = \frac{-n x^n}{K^n + x^n}\\
+& = -n \cdot \frac{1}{(K/x)^n+1}
 \end{align*}
-and
-\begin{equation*}
-\lim_{x \to +\infty} \frac{-n x^n}{K^n + x^n} = -n
-\end{equation*}
 
+Now $K, x, n \geq 0$ and hence the denominator in the preceeding line is larger than 1. Thus:
 
+\begin{align*}
+\frac{\partial \ln f}{\partial \ln x} & = -n \cdot \frac{1}{(K/x)^n+1} \geq -n
+\end{align*}
+
+And thus the claim is true. $\square$
+
+For an example plot of a Hill-type repression function, see Figures \ref{hill} and \ref{log-log}. Note that the log-log sensitivity tends to $-1$ as $x\longrightarrow \infty$
+
+\begin{figure}
+\centering
+\includegraphics[width=5in]{hill.png}
+\caption{A plot of the Hill function $f(x) = \lambda \frac{K^n}{K^n+x^n}$}
+\label{hill}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=5in]{log-log.png}
+\caption{Log-log sensitivity of the Hill function $f(x) = \lambda \frac{K^n}{K^n+x^n}$. Note that the curve tends to $-1$ as $x\longrightarrow \infty$}
+\label{log-log}
+\end{figure}
 
 \subsection*{B}
 
