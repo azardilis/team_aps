@@ -78,11 +78,12 @@ def get_var_dists(mod, n_iter, n_steps):
 
     return var_dists
 
-def get_var_devs(var_dists):
-    # Returns var deviations of 2 species across simulation trajectories
-    var_devs = list(np.abs(var_dists[i, 0]-var_dists[i, 1]) for i in range(np.shape(var_dists)[0]))
+def get_devs(dists):
+    # Returns deviations of statistics between 2 species
+    # across differente simulation trajectories
+    devs = list(np.abs(dists[i, 0]-dists[i, 1]) for i in range(np.shape(dists)[0]))
 
-    return np.array(var_devs)
+    return np.array(devs)
 
 def plot_results(sim_res):
     # plot one example trace of the gillespie algorithm
