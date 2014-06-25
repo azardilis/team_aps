@@ -1,4 +1,3 @@
-import sim
 import numpy as np
 from itertools import product
 import sim
@@ -49,6 +48,16 @@ def plot_vars(vars):
     plt.colorbar(pad=0.05, shrink=.5, aspect=10., ticks=cticks2)
 
     
+    plt.show()
+
+def plot_dev_hist(dists):
+    # Given pairs of either species vars or averages plot
+    # a histogram of their deviations
+    devs = sim.get_devs(dists)
+    plt.hist(devs)
+    plt.title("Deviations of the averages between species")
+    plt.xlabel("Deviation")
+    plt.ylabel("Frequency")
     plt.show()
 
 
