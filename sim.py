@@ -48,19 +48,24 @@ def init_model(la, beta, C):
 
     return mod
 
-def get_vars(sim_res):
+def get_res_dist(sim_res):
+    # Given a specific realisaition of the process
+    # return the average and variance of the species in
+    # two tuples.
     n_species = np.shape(sim_res.trajectories)[1]
     traj = sim_res.trajectories[500:, :]
     w_times = sim_res.wait_times[500:]
     species_var = []
+    species_avg = []
     
     for i in xrange(n_species):
         vals = traj[:, i]
         av = np.average(a=vals, weights=w_times)
         var = np.average(a=(vals-av)**2, weights=w_times)
         species_var.append(var/av**2)
+        species_avg.append(av)
 
-    return species_var
+    return species_var, species_avg
 
 def get_var_dists(mod, n_iter, n_steps):
     # Get the distribution of the variances of the species
