@@ -14,7 +14,6 @@ def simulate_model(model, n_steps):
     w_times = np.zeros(n_steps+1)
     state = np.zeros(n_species)
     state_out[0, :] = state
-    t = 0.0
     w_times[0] = t
     
     for i in xrange(1, n_steps+1):
@@ -24,7 +23,6 @@ def simulate_model(model, n_steps):
         ri = np.nonzero(mres)[0][0]
         state = state + model.S[:, ri]
         state_out[i, :] = state
-        t += dt
         w_times[i] = dt
 
     return SimResults._make([state_out, w_times])
@@ -92,7 +90,6 @@ def plot_results(sim_res):
     t = np.cumsum(sim_res)
     plt.plot(t, sim_res.trajectories)
     plt.show()
-    # TODO: add some annotation to the graph!
 
 def sim_anab_model():
     mod = init_model(la=0.5, beta=0.3, C=1.0)
