@@ -2,6 +2,7 @@ import numpy as np
 from itertools import product
 import sim
 import matplotlib.pyplot as plt
+import operator
 
 def calc_dists(L, B, C, n_steps):
     # Given ranges for params calc variances, averages
@@ -59,6 +60,21 @@ def plot_dev_hist(dists):
     plt.xlabel(r"$|(\sigma_{x_1}^2/\langle x_1 \rangle^2)-(\sigma_{x_2}^2/\langle x_2 \rangle^2)|$")
     plt.ylabel("Frequency")
     plt.show()
+    
+def plot_approx_vars(avars, vars):
+    # plot of the exact variances against
+    # the approximate variances calculate in terms
+    # of avgs and Efficiencies
+    plt.plot(vars, avars, 'o', color='w')
+    plt.xlabel("Exact variance")
+    plt.ylabel("Approximate variance")
+    plt.show()
+    plt.close()
+    plt.hist(np.abs(vars-avars), alpha=0.8)
+    plt.xlabel("|Exact var - approx var|")
+    plt.ylabel("Frequency")
+    plt.show()
+    
 
 
 

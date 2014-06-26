@@ -86,6 +86,28 @@ def get_devs(dists):
 
     return np.array(devs)
 
+def calc_approx_var(avgs, params):
+    beta = params[1]
+    C = params[2]
+    x1 = avgs[0]
+    x2 = avgs[1]
+    
+    E = (C*x1*x2) / (C*x1*x2 + beta*x1)
+    approx_var = (1/x1) * ((1-(E**2/2)) / (1-E**2))
+    
+    return approx_var
+    
+def get_approx_vars(avgs, params):
+    # Takes a list of pairs of averages and 
+    # returns the approx variance
+    n_sims = np.shape(avgs)[0]
+    avars = []
+    for i in xrange(n_sims):
+        avar = calc_approx_var(avgs[i, :], params[i])
+        avars.append(avar)
+        
+    return avars
+    
 def plot_results(sim_res):
     # plot one example trace of the gillespie algorithm
     # for a particular set of params
