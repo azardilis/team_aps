@@ -90,19 +90,20 @@ The difference between the two corrective measures - the overall corrective tend
 \subsection*{A}
 \begin{figure}[!ht]
         \centering
-        \begin{subfigure}[b]{0.496\textwidth}
+        \begin{subfigure}[b]{0.49\textwidth}
                 \includegraphics[width=\textwidth]{images/vars1}
                 \caption{$\lambda, \beta < C=1.5$}
                 \label{fig:vars1}
         \end{subfigure}%
-        
-        \begin{subfigure}[b]{0.496\textwidth}
+        \hfill
+        \begin{subfigure}[b]{0.49\textwidth}
                 \includegraphics[width=\textwidth]{images/vars2}
                 \caption{$\lambda, \beta > C=0.5$}
                 \label{fig:vars2}
         \end{subfigure}
           \newline
         \begin{subfigure}[b]{0.496\textwidth}
+        \centering
                 \includegraphics[width=\textwidth]{images/vars3}
                 \caption{$C, \beta > \lambda=0.5$}
                 \label{fig:vars3}
@@ -130,13 +131,13 @@ The difference between the two corrective measures - the overall corrective tend
 \subsection*{B}
 \begin{figure}[!ht]
         \centering
-        \begin{subfigure}[!ht]{0.496\textwidth}
+        \begin{subfigure}[!ht]{0.7\textwidth}
                 \includegraphics[width=\textwidth]{images/vars_devs}
                 \caption{}
                 \label{fig:devs_vars}
         \end{subfigure}%
         
-        \begin{subfigure}[b]{0.496\textwidth}
+        \begin{subfigure}[b]{0.7\textwidth}
                 \includegraphics[width=\textwidth]{images/avgs_devs}
                 \caption{}
                 \label{fig:devs_avgs}
@@ -145,6 +146,28 @@ The difference between the two corrective measures - the overall corrective tend
 \caption{Relative deviations of the CVs (a) and averages (b) between the two subunits over a number of simulations.}
 \label{fig:dev_hists}
 \end{figure}
+
+\subsection*{C}
+
+\begin{figure}[!ht]
+        \centering
+        \begin{subfigure}[!ht]{0.7\textwidth}
+                \includegraphics[width=\textwidth]{images/approx_exact_var}
+                \caption{}
+                \label{fig:approx_exact_var}
+        \end{subfigure}%
+        
+        \begin{subfigure}[b]{0.7\textwidth}
+                \includegraphics[width=\textwidth]{images/approx_var_dev}
+                \caption{}
+                \label{fig:approx_var_dev}
+        \end{subfigure}
+        
+\caption{(a) Plot of approximate against exact variances and (b) histograms of the deviations between the two. Exact and approximate variances were calculated for 2400 simulation each with different parameter sets.}
+\label{fig:dev_hists}
+\end{figure}
+
+
 
 
 
