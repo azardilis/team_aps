@@ -1,12 +1,13 @@
 import numpy as np
 from functools import partial
 from collections import namedtuple
+import matplotlib.pyplot as plt
 
 AnabolicModel = namedtuple("AnabolicModel", ["S", "rate_funcs"])
 
 def calc_current_rates(rate_funcs, state):
     return list(rf(state) for rf in rate_funcs)
-
+ 
 def simulate_model(model, n_steps):
     SimResults = namedtuple('SimResults', ['trajectories', 'wait_times'])
     n_species = np.shape(model.S)[0]
@@ -14,7 +15,7 @@ def simulate_model(model, n_steps):
     w_times = np.zeros(n_steps+1)
     state = np.zeros(n_species)
     state_out[0, :] = state
-    w_times[0] = t
+    w_times[0] = 0.0
     
     for i in xrange(1, n_steps+1):
         curr_rates = calc_current_rates(model.rate_funcs, state)
@@ -73,7 +74,7 @@ def get_var_dists(mod, n_iter, n_steps):
 
     for i in xrange(n_iter):
         sim_res = simulate_model(mod, n_steps)
-        vars = get_vars(sim_res)
+        vars, avgs = get_res_dist(sim_res)
         var_dists[i, :] = vars
 
     return var_dists
