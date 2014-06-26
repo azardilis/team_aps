@@ -34,7 +34,7 @@
 & = -n \cdot \frac{1}{(K/x)^n+1}
 \end{align*}
 
-Now $K, x, n \geq 0$ and hence the denominator in the preceeding line is larger than 1. Thus:
+Now $K, x, n \geq 0$ and hence the denominator in the preceding line is larger than 1. Thus:
 
 \begin{align*}
 \frac{\partial \ln f}{\partial \ln x} & = -n \cdot \frac{1}{(K/x)^n+1} \geq -n
@@ -88,6 +88,8 @@ The difference between the two corrective measures - the overall corrective tend
 \section*{Question 2}
 
 \subsection*{A}
+The simulation results using a variety of parameter values for each variable are displayed graphically in figure~\ref{fig:vars}. They show that the fluctuations are most stable (IE. lowest level of flux) where there is the greatest discrepancy between creation and combined destruction/assembly. This fits with the intuitive reasoning that as the creative and destructive elements near equilibrium there should be greater variability in the total quantity of each individual element of the system. The simulations (code attached) appear to bear this intuition out, as demonstrated by the bands of higher variance in those simulations with similar frequencies of creation and elimination (degradation and/or assembly).
+
 \begin{figure}[!ht]
         \centering
         \begin{subfigure}[b]{0.49\textwidth}
@@ -129,6 +131,7 @@ The difference between the two corrective measures - the overall corrective tend
 \end{figure}
 
 \subsection*{B}
+The symmetry requirement for the system is generally well adhered to (within reasonable limits) as demonstrated in figure~\ref{fig:div_hists}. Both variance and expectation differences cluster closely around 0, with no significant outliers at frequencies that would give rise to concern about breaching the symmetry requirement in this simulation set. Similarly figure~\ref{fig:?} confirms that the requirement that flux balances are maintained at stationarity is met, with the relative deviations being minimal and centered symmetrically around 0.
 \begin{figure}[!ht]
         \centering
         \begin{subfigure}[!ht]{0.7\textwidth}
@@ -148,7 +151,7 @@ The difference between the two corrective measures - the overall corrective tend
 \end{figure}
 
 \subsection*{C}
-
+Figure~\ref{fig:approx_exact_var} compared the approximate and exact variances directly, whilst figure~\ref{fig:approx_var_dev} shows the frequencies of deviation magnitude between the two. They demonstrate an overall consistency of match between the approximate and exact variances, with a distinct over-estimation tendency at the higher end of the approximated variances. The frequency of these overestimates is low, but there is an overall trend towards marginally higher approximated than exact variance. The accuracy of the approximation is therefore not perfect, but given the overwhelmingly higher frequency of similar matches it is likely to be adequate given the benefits conferred by simulation.
 \begin{figure}[!ht]
         \centering
         \begin{subfigure}[!ht]{0.7\textwidth}
