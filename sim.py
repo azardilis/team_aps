@@ -35,7 +35,7 @@ def get_rate_funcs(la, beta, C):
     deg1 = partial(lambda x, beta: beta*x[0], beta=beta)
     deg2 = partial(lambda x, beta: beta*x[1], beta=beta)
     complex_form = partial(lambda x, C: C*x[0]*x[1], C=C)
-
+    
     return [prod, deg1, prod, deg2, complex_form]
 
 def init_model(la, beta, C):
@@ -82,7 +82,7 @@ def get_var_dists(mod, n_iter, n_steps):
 def get_devs(dists):
     # Returns deviations of statistics between 2 species
     # across differente simulation trajectories
-    devs = list(np.abs(dists[i, 0]-dists[i, 1]) for i in range(np.shape(dists)[0]))
+    devs = list(dists[i, 0]-dists[i, 1] for i in range(np.shape(dists)[0]))
 
     return np.array(devs)
 
@@ -108,10 +108,19 @@ def get_approx_vars(avgs, params):
         
     return avars
     
+def calc_neg_fluxes(avgs, params):
+    beta = params[1]
+    C = params[2]
+    
+    x1 = avgs[0]
+    x2 = avgs[1]
+    
+    return C*x1*x2 + beta*x1, C*x1*x2 + beta*x2
+    
 def plot_results(sim_res):
     # plot one example trace of the gillespie algorithm
     # for a particular set of params
-    t = np.cumsum(sim_res)
+    t = np.cumsum(sim_res.wait_times)
     plt.plot(t, sim_res.trajectories)
     plt.show()
 
