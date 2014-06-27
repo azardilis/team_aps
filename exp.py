@@ -18,7 +18,6 @@ def calc_dists(L, B, C, n_steps):
 
     return np.array(vars), np.array(avgs)
 
-
 def plot_vars(vars):
     n_points = 20
     L = np.linspace(0.5, 0.9, n_points)
@@ -71,12 +70,15 @@ def plot_approx_vars(avars, vars):
     plt.show()
     
 def plot_approx_var_dev(avars, vars):
-    plt.hist(avars-vars[:, 0])
+    plt.hist(avars-vars[:, 0], alpha=0.8)
     plt.xlabel("Approximate CV - Exact CV")
     plt.ylabel("Frequency")
     plt.show()
     
-
-
-
-        
+def plot_fluxes_devs(nfs, params):
+    pfs = np.array(params)[:, 0]
+    plt.hist(pfs - nfs, alpha=0.8)
+    plt.xlabel(r"$\langle R_2^+ \rangle - \langle R_2^- \rangle$")
+    plt.ylabel("Frequency")
+    plt.show()
+    
