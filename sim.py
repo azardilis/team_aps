@@ -108,20 +108,34 @@ def get_approx_vars(avgs, params):
         
     return avars
     
-def calc_neg_fluxes(avgs, params):
+def calc_neg_flux(avgs, params):
     beta = params[1]
     C = params[2]
     
     x1 = avgs[0]
     x2 = avgs[1]
     
-    return C*x1*x2 + beta*x1, C*x1*x2 + beta*x2
+    return C*x1*x2 + beta*x1
+    
+def get_neg_fluxes(avgs, params):
+    n_sims = np.shape(avgs)[0]
+    nfs = []
+    
+    for i in xrange(n_sims):
+        nf = calc_neg_flux(avgs[i, :], params[i])        
+        nfs.append(nf)
+        
+    return nfs
     
 def plot_results(sim_res):
     # plot one example trace of the gillespie algorithm
     # for a particular set of params
     t = np.cumsum(sim_res.wait_times)
-    plt.plot(t, sim_res.trajectories)
+    plt.plot(t, sim_res.trajectories[:, 0], label=r"$x_1$")
+    plt.plot(t, sim_res.trajectories[:, 1], label=r"$x_2$")
+    plt.xlabel("t")
+    plt.ylabel("# of molecules")
+    plt.legend()
     plt.show()
 
 def sim_anab_model():
