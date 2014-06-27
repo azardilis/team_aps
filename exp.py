@@ -21,8 +21,8 @@ def calc_dists(L, B, C, n_steps):
 
 def plot_vars(vars):
     n_points = 20
-    L = np.linspace(1.0, 2.0, n_points)
-    B = np.linspace(1.0, 2.0 ,n_points)
+    L = np.linspace(0.5, 0.9, n_points)
+    C = np.linspace(0.1, 0.5 ,n_points)
 
     vars_x1 = np.reshape(vars[:, 0], (n_points, n_points))
     vars_x2 = np.reshape(vars[:, 1], (n_points, n_points))
@@ -31,7 +31,7 @@ def plot_vars(vars):
     plt.imshow(vars_x1, interpolation='none', aspect=20/20., vmin=0.5, vmax=1.8)
     plt.xlabel(r'C')
     plt.ylabel(r'$\lambda$')
-    plt.xticks(np.arange(0, n_points, 4), np.around(B[np.arange(0, n_points, 4)], 1))
+    plt.xticks(np.arange(0, n_points, 4), np.around(C[np.arange(0, n_points, 4)], 1))
     plt.yticks(np.arange(0, n_points, 4), np.around(L[np.arange(0, n_points, 4)], 1))
     plt.title(r'CV $x_1$')
     cticks1 = np.around(np.linspace(np.min(vars_x1), np.max(vars_x1), 4), 1)
@@ -41,7 +41,7 @@ def plot_vars(vars):
     plt.imshow(vars_x2, interpolation='none', aspect=20/20.,vmin=0.7, vmax=1.8)
     plt.xlabel(r'C')
     plt.ylabel(r'$\lambda$')
-    plt.xticks(np.arange(0, n_points, 4), np.around(B[np.arange(0, n_points, 4)], 1))
+    plt.xticks(np.arange(0, n_points, 4), np.around(C[np.arange(0, n_points, 4)], 1))
     plt.yticks(np.arange(0, n_points, 4), np.around(L[np.arange(0, n_points, 4)], 1))
     plt.title(r'CV $x_2$')
     cticks2 = np.around(np.linspace(np.min(vars_x2), np.max(vars_x2), 4), 1)
