@@ -137,7 +137,9 @@ When $\lambda$ is increased or $\beta$ or $C$ are decreased it is clear that $\l
 \end{figure}
 
 \subsection*{B}
-The symmetry requirement for the system is generally well adhered to (within reasonable limits) as demonstrated in figure~\ref{fig:div_hists}. Both variance and expectation differences cluster closely around 0, with no significant outliers at frequencies that would give rise to concern about breaching the symmetry requirement in this simulation set. Similarly figure~\ref{fig:?} confirms that the requirement that flux balances are maintained at stationarity is met, with the relative deviations being minimal and centered symmetrically around 0.
+Figure~\ref{fig:dev_hists} demonstrates the symmetry of the system in the numerical simulations. Both variance and expectation differences are distributed about 0 with a small spread. Since the simulations are stochastic it is not surprising that there are non-zero differences in either the variance or expectations, however we do require that the expectations of these differences are 0  - something that we do see. Similarly figure~\ref{fig:?} confirms that the requirement that flux balances are maintained at stationarity is met, with the relative deviations being minimal and centered symmetrically around 0.
+
+
 \begin{figure}[!ht]
         \centering
         \begin{subfigure}[!ht]{0.7\textwidth}
@@ -157,7 +159,12 @@ The symmetry requirement for the system is generally well adhered to (within rea
 \end{figure}
 
 \subsection*{C}
-Figure~\ref{fig:approx_exact_var} compared the approximate and exact variances directly, whilst figure~\ref{fig:approx_var_dev} shows the frequencies of deviation magnitude between the two. They demonstrate an overall consistency of match between the approximate and exact variances, with a distinct over-estimation tendency at the higher end of the approximated variances. The frequency of these overestimates is low, but there is an overall trend towards marginally higher approximated than exact variance. The accuracy of the approximation is therefore not perfect, but given the overwhelmingly higher frequency of similar matches it is likely to be adequate given the benefits conferred by simulation.
+Figure~\ref{fig:approx_exact_var} compared the approximate and exact variances directly, whilst figure~\ref{fig:approx_var_dev} shows the frequencies of deviation between the two. Together they show that the approximation is consitently higher than the exact variance, with the over-estimation becoming larger as the exact variance increases. 
+
+There may not be a causal link between larger exact variances and worse over-estimation; it may have arisen due to the choice of parameters used. The difference between the exact and inexact variances can be traced to the approximation used to calculate the efficiency $E$ in which we assume that $\langle x_1 x_2 \rangle = \langle x_1 \rangle \langle x_2 \rangle$. This is a true equality in the case that $x_1$ and $x_2$ are independent and is a worse approximation the greater the correlation between the two. When we examined the points in figure~\ref{fig:approx_exact_var} we found that those with approximate variances greater than $3$ all came from simulations with parameters in which $\beta$ was very small and $C$ was very large. In this case $x_1$ and $x_2$ are strongly correlated (because a decrease in $x_1$ probably comes about from a reaction that also decreases $x_2$) and so the approximation is less valid. This may explain why the variances for these points were overestimated so much more than the rest.
+
+It is worth pointing out that despite inaccuracies for certain choices of parameters, there are many cases in which the approximations are accurate enough to be useful.
+
 \begin{figure}[!ht]
         \centering
         \begin{subfigure}[!ht]{0.7\textwidth}
@@ -172,7 +179,7 @@ Figure~\ref{fig:approx_exact_var} compared the approximate and exact variances d
                 \label{fig:approx_var_dev}
         \end{subfigure}
         
-\caption{(a) Plot of approximate against exact variances and (b) histograms of the deviations between the two. Exact and approximate variances were calculated for 2400 simulation each with different parameter sets.}
+\caption{(a) Plot of approximate against exact variances (line is $y=x$) and (b) histograms of the deviations between the two. Exact and approximate variances were calculated for 2400 simulation each with different parameter sets.}
 \label{fig:dev_hists}
 \end{figure}
 
