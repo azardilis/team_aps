@@ -44,18 +44,24 @@ And thus the claim is true. $\square$
 
 For an example plot of a Hill-type repression function, see Figures \ref{hill} and \ref{log-log}. Note that the log-log sensitivity tends to $-1$ as $x\longrightarrow \infty$
 
-\begin{figure}
-\centering
-\includegraphics[width=5in]{images/hill.png}
-\caption{A plot of the Hill function $f(x) = \lambda \frac{K^n}{K^n+x^n}$}
-\label{hill}
-\end{figure}
-
-\begin{figure}
-\centering
-\includegraphics[width=5in]{images/log-log.png}
-\caption{Log-log sensitivity of the Hill function $f(x) = \lambda \frac{K^n}{K^n+x^n}$. Note that the curve tends to $-1$ as $x\longrightarrow \infty$}
-\label{log-log}
+\begin{figure}[!ht]
+        \centering
+        \begin{subfigure}[!ht]{0.7\textwidth}
+        \centering
+                \includegraphics[scale=0.45]{images/hill}
+                \caption{}
+                \label{hill}
+        \end{subfigure}%
+        
+        \begin{subfigure}[b]{0.7\textwidth}
+        \centering
+                \includegraphics[scale=0.45]{images/log-log}
+                \caption{}
+                \label{log-log}
+        \end{subfigure}
+        
+\caption{(a) A plot of the Hill function $f(x) = \lambda \frac{K^n}{K^n+x^n}$ and (b) Log-log sensitivity of the Hill function $f(x) = \lambda \frac{K^n}{K^n+x^n}$. Note that the curve tends to $-1$ as $x\longrightarrow \infty$ }
+\label{fig:dev_hists}
 \end{figure}
 
 \subsection*{B}
@@ -136,8 +142,16 @@ When $\lambda$ is increased or $\beta$ or $C$ are decreased it is clear that $\l
         \caption{CVs of the two species, $x_1$ and $x_2$, for different parameter regimes. For each parameter regime one of the 3 parameters was kept constant with the other 2 varying over a $20 \times 20$ grid of values.}\label{fig:vars}
 \end{figure}
 
+\begin{figure}[!ht]
+\centering
+        \includegraphics[scale=0.45]{images/trace}
+                \caption{An example trace with parameter values: $\lambda=0.6$, $\beta=1.0$, and $C=0.1$.}
+                \label{fig:trace}
+                
+\end{figure}
+        
 \subsection*{B}
-Figure~\ref{fig:dev_hists} demonstrates the symmetry of the system in the numerical simulations. Both variance and expectation differences are distributed about 0 with a small spread. Since the simulations are stochastic it is not surprising that there are non-zero differences in either the variance or expectations, however we do require that the expectations of these differences are 0  - something that we do see. Similarly figure~\ref{fig:?} confirms that the requirement that flux balances are maintained at stationarity is met, with the relative deviations being minimal and centered symmetrically around 0.
+Figure~\ref{fig:dev_hists} demonstrates the symmetry of the system in the numerical simulations. Both variance and expectation differences are distributed about 0 with a small spread. Since the simulations are stochastic it is not surprising that there are non-zero differences in either the variance or expectations, however we do require that the expectations of these differences are 0  - something that we do see. Similarly figure~\ref{fig:fluxes} confirms that the requirement that flux balances are maintained at stationarity is met, with the relative deviations being minimal and centred symmetrically around 0.
 
 
 \begin{figure}[!ht]
@@ -154,8 +168,28 @@ Figure~\ref{fig:dev_hists} demonstrates the symmetry of the system in the numeri
                 \label{fig:devs_avgs}
         \end{subfigure}
         
-\caption{Relative deviations of the CVs (a) and averages (b) between the two subunits over a number of simulations.}
+\caption{Relative deviations of (a) the CVs and (b) the averages between the two subunits over a number of simulations.}
 \label{fig:dev_hists}
+\end{figure}
+
+\begin{figure}[!ht]
+        \centering
+        \begin{subfigure}[!ht]{0.6\textwidth}
+        \centering
+                \includegraphics[scale=0.5]{images/fluxes1}
+                \caption{}
+                \label{fig:flux_devs1}
+        \end{subfigure}%
+        
+        \begin{subfigure}[b]{0.6\textwidth}
+        \centering
+                \includegraphics[scale=0.5]{images/fluxes2}
+                \caption{}
+                \label{fig:flux_devs2}
+        \end{subfigure}
+        
+\caption{Relative deviations of the birth and death fluxes for (a) $x_1$ and (b) $x_2$}
+\label{fig:fluxes}
 \end{figure}
 
 \subsection*{C}
@@ -182,13 +216,5 @@ It is worth pointing out that despite inaccuracies for certain choices of parame
 \caption{(a) Plot of approximate against exact variances (line is $y=x$) and (b) histograms of the deviations between the two. Exact and approximate variances were calculated for 2400 simulation each with different parameter sets.}
 \label{fig:dev_hists}
 \end{figure}
-
-
-
-
-
-
-
-
 
 \end{document}
