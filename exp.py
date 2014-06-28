@@ -4,8 +4,8 @@ import sim
 import matplotlib.pyplot as plt
 
 def calc_dists(L, B, C, n_steps):
-    # Given ranges for params calc variances, averages
-    # for each parameter combination
+    # Given ranges for the 3 parameters calculate variances, averages
+    # for each parameter combination and returns them in 2 lists
     vars = []
     avgs = []
     
@@ -61,8 +61,8 @@ def plot_dev_hist(dists):
     plt.show()
     
 def plot_approx_vars(avars, vars):
-    # plot of the exact variances against
-    # the approximate variances calculate in terms
+    # Plots he exact variances against
+    # the approximate variances calculated in terms
     # of avgs and Efficiencies
     plt.plot(vars[:, 0], avars, 'wo', vars[:, 0], vars[:, 0])
     plt.xlabel("Exact CV")
