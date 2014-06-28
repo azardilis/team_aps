@@ -9,6 +9,14 @@ def calc_current_rates(rate_funcs, state):
     return list(rf(state) for rf in rate_funcs)
  
 def simulate_model(model, n_steps):
+    # Given a model simulates it using the Gillespie algorithm
+    # for n_steps number of steps
+    #
+    # args:
+    #        model: tuple containing the stoichiometric matrix of the 
+    #               reactions(S) and rate functions(rate_funcs)
+    # Returns:
+    #        tuple with species trajectories(trajectories) and wait times
     SimResults = namedtuple('SimResults', ['trajectories', 'wait_times'])
     n_species = np.shape(model.S)[0]
     state_out  = np.zeros((n_steps+1, n_species))
@@ -29,8 +37,8 @@ def simulate_model(model, n_steps):
     return SimResults._make([state_out, w_times])
 
 def get_rate_funcs(la, beta, C):
-    # create rate functions for anabolic process
-    # based on give params
+    # Creates rate functions for anabolic process
+    # based on given parameters
     prod = partial(lambda x, la: la, la=la)
     deg1 = partial(lambda x, beta: beta*x[0], beta=beta)
     deg2 = partial(lambda x, beta: beta*x[1], beta=beta)
@@ -39,6 +47,9 @@ def get_rate_funcs(la, beta, C):
     return [prod, deg1, prod, deg2, complex_form]
 
 def init_model(la, beta, C):
+    # Initialises anabolic process model with the 
+    # stoichiometry matrix and rate functions
+    #
     # S : Stoichiometric matrix species x reactions
     S = np.array([[1, -1, 0, 0, -1],
                   [0, 0, 1, -1, -1]])
@@ -48,12 +59,12 @@ def init_model(la, beta, C):
     return mod
 
 def get_res_dist(sim_res):
-    # Given a specific realisaition of the process
-    # return the average and variance of the species in
+    # Given a specific realisation of the process
+    # returns the averages and variance of the species in
     # two tuples.
     n_species = np.shape(sim_res.trajectories)[1]
-    traj = sim_res.trajectories[500:, :]
-    w_times = sim_res.wait_times[500:]
+    traj = sim_res.trajectories[5000:, :]
+    w_times = sim_res.wait_times[5000:]
     species_var = []
     species_avg = []
     
@@ -66,22 +77,9 @@ def get_res_dist(sim_res):
 
     return species_var, species_avg
 
-def get_var_dists(mod, n_iter, n_steps):
-    # Get the distribution of the variances of the species
-    # for n_iter realisations of n_steps each
-    n_species = np.shape(mod.S)[0]
-    var_dists = np.zeros((n_iter, n_species))
-
-    for i in xrange(n_iter):
-        sim_res = simulate_model(mod, n_steps)
-        vars, avgs = get_res_dist(sim_res)
-        var_dists[i, :] = vars
-
-    return var_dists
-
 def get_devs(dists):
     # Returns deviations of statistics between 2 species
-    # across differente simulation trajectories
+    # across different simulations
     devs = list(dists[i, 0]-dists[i, 1] for i in range(np.shape(dists)[0]))
 
     return np.array(devs)
@@ -98,8 +96,11 @@ def calc_approx_var(avgs, params):
     return approx_var
     
 def get_approx_vars(avgs, params):
-    # Takes a list of pairs of averages and 
-    # returns the approx variance
+    # avgs: species averages for different simulations
+    # params: parameters used for each of the simulations
+    #
+    # Returns:
+    # avars: list of approximate CVs for the simulations
     n_sims = np.shape(avgs)[0]
     avars = []
     for i in xrange(n_sims):
@@ -118,6 +119,8 @@ def calc_neg_flux(avgs, params):
     return C*x1*x2 + beta*x1
     
 def get_neg_fluxes(avgs, params):
+    # Given averages and parameters for different simulation
+    # returns the average negative fluxes
     n_sims = np.shape(avgs)[0]
     nfs = []
     
@@ -128,8 +131,7 @@ def get_neg_fluxes(avgs, params):
     return nfs
     
 def plot_results(sim_res):
-    # plot one example trace of the gillespie algorithm
-    # for a particular set of params
+    # Plots one example trace for one simulation
     t = np.cumsum(sim_res.wait_times)
     plt.plot(t, sim_res.trajectories[:, 0], label=r"$x_1$")
     plt.plot(t, sim_res.trajectories[:, 1], label=r"$x_2$")
@@ -140,6 +142,6 @@ def plot_results(sim_res):
 
 def sim_anab_model():
     mod = init_model(la=0.5, beta=0.3, C=1.0)
-    sim_results = simulate_model(model=mod, n_steps=100)
-
-    return sim_results
+    sim_res = simulate_model(model=mod, n_steps=100)
+    vars, avgs = get_res_dist(sim_res)
+    print vars, avgs
