@@ -100,7 +100,9 @@ When $C$ and $\beta$ are large compared to $\lambda$ there appears to be little 
 
 When $C$ and $\lambda$ are small compared to $\beta$ we see that smaller values of $\lambda$ lead to larger fluctuations and that the value of $C$ is correlated positively with the magnitude of the fluctuations for fixed $\lambda$ but that its effect on the fluctuations is smaller than that of $\lambda$.
 
-When $\lambda$ is increased or $\beta$ or $C$ are decreased it is clear that $\langle x \rangle$ should increase, since changing these parameters in this way affects the overall production/destruction rate predictably. It is less clear what effect changing these parameters will have on $\sigma^2_x$, and since the relative deviations depend on both of these quantities numerical simulation or mathematical arguments are needed to understand the effect of changing parameters. For example, for fixed $\beta$ and $C$ it is not intuitively clear what effect increasing $\lambda$ would have on $\sigma^2_x$ - however from the figures we can infer that either $\sigma^2_x$ is decreasing or it is increasing at a slower rate that $\langle x \rangle$.
+When $\lambda$ is increased or $\beta$ or $C$ are decreased it is clear that $\langle x \rangle$ should increase, since changing these parameters in this way affects the overall production/destruction rate predictably. It is less clear what effect changing these parameters will have on $\sigma^2_x$, and since the relative deviations (ie $\frac{\sigma^2_x}{\langle x \rangle}$) depend on both of these quantities numerical simulation or mathematical arguments are needed to understand the effect of changing parameters. For example, for fixed $\beta$ and $C$ it is not intuitively clear what effect increasing $\lambda$ would have on $\sigma^2_x$ - however, since we can see that the relative deviations decrease from the figures, we can infer that either $\sigma^2_x$ is decreasing or it is increasing at a slower rate than $\langle x \rangle$.
+
+See figure \ref{fig:trace} for an example trace from a simulation run with parameters $\lambda=0.6$, $\beta=1.0$, and $C=0.1$.
 
 \begin{figure}[!ht]
         \centering
@@ -151,8 +153,9 @@ When $\lambda$ is increased or $\beta$ or $C$ are decreased it is clear that $\l
 \end{figure}
         
 \subsection*{B}
-Figure~\ref{fig:dev_hists} demonstrates the symmetry of the system in the numerical simulations. Both variance and expectation differences are distributed about 0 with a small spread. Since the simulations are stochastic it is not surprising that there are non-zero differences in either the variance or expectations, however we do require that the expectations of these differences are 0  - something that we do see. Similarly figure~\ref{fig:fluxes} confirms that the requirement that flux balances are maintained at stationarity is met, with the relative deviations being minimal and centred symmetrically around 0.
+Figure~\ref{fig:dev_hist} demonstrates the symmetry of the system in the numerical simulations. Both variance and expectation differences are distributed about 0 with a small spread. Since the simulations are stochastic it is not surprising that there are non-zero differences in either the variance or expectations, however we do require that the expectations of these differences are 0  - something that we do see. Similarly figure~\ref{fig:fluxes} confirms that the requirement that flux balances are maintained at stationarity is met, with the relative deviations being minimal and centred symmetrically around 0.
 
+%there is something wrong with the plots \ref{fig:fluxes} fo sho
 
 \begin{figure}[!ht]
         \centering
@@ -169,7 +172,7 @@ Figure~\ref{fig:dev_hists} demonstrates the symmetry of the system in the numeri
         \end{subfigure}
         
 \caption{Relative deviations of (a) the CVs and (b) the averages between the two subunits over a number of simulations.}
-\label{fig:dev_hists}
+\label{fig:dev_hist}
 \end{figure}
 
 \begin{figure}[!ht]
